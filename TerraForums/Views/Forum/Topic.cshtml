@@ -2,6 +2,14 @@
 
 <h1>Witaj w @Model.Forum.Name!</h1>
 
+<span id="headingBtn">
+    <a asp-controller="post" 
+    asp-action="Create" 
+    asp-route-id=@Model.Forum.Id class="btn btn-newPost">
+    Create a Post
+    </a>
+</span>
+
 @if (Model.Posts.Any())
 {
     <table class="table table-bordered table-hover">
@@ -15,7 +23,7 @@
                         </a>
                     </td>
                     <td>
-                        @post.AuthorId
+                        @post.AuthorName
                     </td>
                     <td>
                         @post.DatePosted

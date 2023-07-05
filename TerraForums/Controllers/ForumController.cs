@@ -42,6 +42,7 @@ namespace TerraForums.Controllers
             {
                 Id = post.Id,
                 AuthorId = post.User.Id,
+                AuthorName = post.User.UserName,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count(),
