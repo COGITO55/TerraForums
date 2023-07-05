@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TerraForums.Data\TerraForums.Data.csproj" />
+    <ProjectReference Include="..\TerraForums.Service\TerraForums.Service.csproj" />
   </ItemGroup>
 
 </Project>
