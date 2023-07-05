@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TerraForum;
 using TerraForums.Data;
 using TerraForums.Service;
 
@@ -15,6 +16,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IForum, ForumService>();
+builder.Services.AddScoped<IPost, PostService>();
 
 var app = builder.Build();
 

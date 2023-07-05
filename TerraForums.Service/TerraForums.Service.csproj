@@ -17,4 +17,8 @@
 		</PackageReference>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\TerraForums.Data\TerraForums.Data.csproj" />
+	</ItemGroup>
+
 </Project>

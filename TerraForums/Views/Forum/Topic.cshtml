@@ -1,0 +1,43 @@
+﻿@model TerraForums.Models.Forum.ForumTopicModel
+
+<h1>Witaj w @Model.Forum.Name!</h1>
+
+@if (Model.Posts.Any())
+{
+    <table class="table table-bordered table-hover">
+        <tbody>
+            @foreach(var post in Model.Posts)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                            @post.Title
+                        </a>
+                    </td>
+                    <td>
+                        @post.AuthorId
+                    </td>
+                    <td>
+                        @post.DatePosted
+                    </td>
+                    <td>
+                        @post.RepliesCount
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="noPosts">
+        <h3>
+            Wygląda na to, że nie ma żadnych postów dla tematu @Model.Forum.Name. <br />
+            Why not
+            <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id">
+                <span>create</span>
+            </a>
+            one?
+        </h3>
+    </div>
+}

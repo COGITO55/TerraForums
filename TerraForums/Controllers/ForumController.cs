@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TerraForums.Data.Models;
 using TerraForums.Data;
+using TerraForums.Models.Forum;
+using TerraForums.Models.Post;
 
 namespace TerraForums.Controllers
 {
@@ -39,7 +41,7 @@ namespace TerraForums.Controllers
             var postListings = posts.Select(post => new PostListingModel
             {
                 Id = post.Id,
-                AuthorID = post.User.Id,
+                AuthorId = post.User.Id,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count(),
@@ -61,7 +63,7 @@ namespace TerraForums.Controllers
             return BuildForumListing(forum);
         }
 
-        private ForumListingModel BuildForumListing(myForum forum)
+        private ForumListingModel BuildForumListing(Forum forum)
         {
             return new ForumListingModel
             {
