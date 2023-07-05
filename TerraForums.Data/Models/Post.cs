@@ -1,4 +1,4 @@
-﻿namespace TerraForums.Models
+﻿namespace TerraForums.Data.Models
 {
     public class Post
     {
