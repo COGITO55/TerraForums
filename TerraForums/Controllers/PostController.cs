@@ -63,9 +63,9 @@ namespace TerraForums.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             var post = BuildPost(model, user);
 
-            await _postService.Add(post);
+            _postService.Add(post).Wait();
 
-            return RedirectToAction("Index", "Post", post.Id);
+            return RedirectToAction("Index", "Post", new { id = post.Id });
         }
 
         private Post BuildPost(NewPostModel model, ApplicationUser user)
