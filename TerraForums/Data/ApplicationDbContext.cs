@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using TerraForums.Models;
 
 namespace TerraForums.Data
 {
@@ -9,5 +11,10 @@ namespace TerraForums.Data
             : base(options)
         {
         }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Forum> Forums { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<PostReply> PostReplies { get; set; }
     }
 }
