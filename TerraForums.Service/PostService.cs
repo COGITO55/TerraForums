@@ -31,7 +31,11 @@ namespace TerraForum
 
         public IEnumerable<Post> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Posts
+               .Include(post => post.Forum)
+               .Include(post => post.User)
+               .Include(post => post.Replies)
+                   .ThenInclude(reply => reply.User);
         }
 
         public Post GetById(int id)
@@ -47,6 +51,11 @@ namespace TerraForum
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<Post> GetLatestPosts(int n)
+        {
+            return GetAll().OrderByDescending(post => post.Created).Take(n);
         }
 
         public IEnumerable<Post> GetPostsByForum(int id)
