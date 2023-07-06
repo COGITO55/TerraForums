@@ -2,27 +2,27 @@
 
 <div class="container-body">
     <div class="row frontPageSplash">
-        <div class="col-md-6 frontPageLearn">
+        <div class="col-md-12 frontPageLearn">
             <div class="frontPageHeading">Place Holder, Hold Places and Place the Holds</div>
             <p class="frontPageSubHeading">Prawidziwe forum dla terrorystów i hodowców egzotycznych zwierząt</p>
             <div>
                 <form asp-controller="Search" asp-action="Search" method="post">
-                    <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Szukaj tematu..." />
+                    <input class="homeSearch" asp-for="SearchQuery" type="text" placeholder="Szukaj tematu..." />
                 </form>
             </div>
         </div>
         <div class="col-md-6"></div>
     </div>
-    <div class="row frontPagecontent">
-        <h3 id="latestPosts">Nowe wpisy</h3>
+    <div class="row frontPageContent">
+        <h3 id="latestPosts">Nowe wpisy (@Model.LatestPosts.Count())</h3>
         <table class="table table-hover" id="latestPostsTable">
             <tbody>
                 @foreach(var post in Model.LatestPosts)
                 {
                     <tr>
                         <td>
-                            <div class="forumLogo" style="bakcground-image: url(@post.Forum.ImageUrl); background-size=100%"></div>
-                            <div class="PostTitle">
+                            <div class="forumLogo" style="background-image: url(@post.Forum.ImageUrl);"></div>
+                            <div class="postTitle">
                                 <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
                                     @post.Title
                                 </a>

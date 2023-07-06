@@ -34,7 +34,7 @@ namespace TerraForums.Controllers
 
         public HomeIndexModel BuildHomeIndexModel()
         {
-            var latestPosts = _postService.GetLatestPosts(10);
+            var latestPosts = _postService.GetLatestPosts(5);
 
             var posts = latestPosts.Select(post => new PostListingModel
             {
