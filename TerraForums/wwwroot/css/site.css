@@ -354,12 +354,13 @@ body {
     font-size: 0.9em;
 }
 
-#forumIndexContent {
+.forumIndexContent {
     padding-bottom: 60px;
-    background-color: white;
+    background-color: #eee;
 }
 
 .noPosts {
+    background-color: #ddd;
     text-align: center;
     padding-top: 30px;
     font-family: 'Open Sans';

@@ -6,7 +6,8 @@ namespace TerraForums.Data
     {
         Post GetById(int Id);
         IEnumerable<Post> GetAll();
-        IEnumerable<Post> GetFilteredPosts(int id, string searchQuery);
+        IEnumerable<Post> GetFilteredPosts(Forum forum, string searchQuery);
+        IEnumerable<Post> GetFilteredPosts(string searchQuery);
         IEnumerable<Post> GetPostsByForum(int id);
         IEnumerable<Post> GetLatestPosts(int n);
 
