@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TerraForums.Data
 {
-    internal interface IUpload
+    public interface IUpload
     {
     }
 }
