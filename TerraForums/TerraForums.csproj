@@ -36,7 +36,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Images\Forum\" />
-    <Folder Include="wwwroot\Images\Users\" />
     <Folder Include="wwwroot\Images\Themes\" />
   </ItemGroup>
 

@@ -1,51 +1,108 @@
 ﻿@model TerraForums.Models.Forum.ForumTopicModel
 
-<h1>Witaj w @Model.Forum.Name!</h1>
-
-<span id="headingBtn">
-    <a asp-controller="post" 
-    asp-action="Create" 
-    asp-route-id=@Model.Forum.Id class="btn btn-newPost">
-    Create a Post
-    </a>
-</span>
-
-@if (Model.Posts.Any())
-{
-    <table class="table table-bordered table-hover">
-        <tbody>
-            @foreach(var post in Model.Posts)
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">
+        <span>@Model.Forum.Name Forum</span>
+            @if (Context.User.Identity.IsAuthenticated)
             {
-                <tr>
-                    <td>
-                        <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
-                            @post.Title
-                        </a>
-                    </td>
-                    <td>
-                        @post.AuthorName
-                    </td>
-                    <td>
-                        @post.DatePosted
-                    </td>
-                    <td>
-                        @post.RepliesCount
-                    </td>
-                </tr>
+                <span id="headingBtn">
+                    <a class="btn btn-newPost" 
+                       asp-controller="Post"
+                       asp-action="Create" 
+                       asp-route-id="@Model.Forum.Id">
+                       Create Post
+                   </a>
+                </span>
             }
-        </tbody>
-    </table>
-}
-else
-{
-    <div class="noPosts">
-        <h3>
-            Wygląda na to, że nie ma żadnych postów dla tematu @Model.Forum.Name. <br />
-            Why not
-            <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id">
-                <span>create</span>
-            </a>
-            one?
-        </h3>
+            <form asp-controller="Forum" asp-action="Search" method="post">
+                <div class="searchForm">
+                    <input class="searchBar" asp-for="SearchQuery" type="text" placeholder="Wyszukaj..." onfocus="clearThis(this)" />
+                    <button class="btn buttonSearch" type="submit">
+                        <i class="material-icons">search</i>
+                    </button>
+                </div>
+                <input asp-for="Forum.Id" name="id" type="hidden" />
+            </form>
+        </div>
+        <div class="sectionDescription">
+            <div class="forumLogo" style="background-image: url(@Model.Forum.ImageUrl)"></div>
+            <p>Welcome to the @Model.Forum.Name forum. Please keep posts friendly and on-topic.</p>
+            
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <p>
+                    <span>Musisz być
+                        <a asp-cotnroller="Account" asp-action="Register">zarejestrowany</a>
+                        , aby utworzyć nowy post.
+                    </span>
+                </p>
+            }
+        </div>
     </div>
+    <div class="row forumIndexContent">
+        @if (Model.Posts.Any())
+        {
+            <table class="table table-hover table-bordered" id="forumIndexTable">
+                <tbody>
+                    @foreach(var post in Model.Posts)
+                    {
+                        <tr>
+                            <td>
+                                <div class="postData">
+                                    <div class="postTitle">
+                                        <a asp-controller="Post" 
+                                           asp-action="Index"
+                                           asp-route-id="@post.Id">
+                                           @post.Title
+                                        </a>
+                                    </div>
+                                    <div class="forumSubTitle">
+                                        <div>
+                                            <span class="postAuthor">
+                                                <a asp-controller="Profile" 
+                                                   asp-action="Detail"
+                                                   asp-route-id="@post.AuthorId">
+                                                   @post.AuthorName
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="forumPostCount">
+                                    Odpowiedzi (@post.RepliesCount)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="postDate"> z dnia @post.DatePosted</div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="noPosts">
+                <i class="material-icons md-72">question_answer</i>
+                <h3>
+                    Wygląda na to, że nie ma jeszcze żadnych postów w tej kategorii.
+                    <a asp-controlle="Post" asp-acti="Create" asp-route-id="@Model.Forum.Id">
+                    Utwórz 
+                    </a>
+                    pierwszy post.
+                </h3>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function clearThis(target){
+            target.value = "";
+        }
+    </script>
 }
