@@ -136,6 +136,21 @@ body {
     margin: 4px 0 16px 0;
 }
 
+.searchBar {
+    padding: 3px 5px 2px 12px;
+    margin: 8px;
+    background-color: #333;
+    width: 10%;
+    transition: ease 0.3s;
+    border: none;
+    color: gray
+}
+    .searchBar:focus {
+        color: black;
+        width: 60%;
+        background-color: #fff;
+    }
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -268,6 +283,22 @@ body {
         background-color: #00897B !important;
         color: #fff !important;
         transition: ease-in 0.1s;
+    }
+
+.btn-forumSearch {
+    background: none !important;
+    color: #00e326;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    transition: ease 0.3s;
+}
+    .btn-forumSearch:hover {
+        background: none !important;
+        color: #00a326;
+        border: none;
+        padding: 0 !important;
+        font: inherit;
     }
 
 #forumIndexTable td {

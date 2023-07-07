@@ -18,7 +18,7 @@
             <form asp-controller="Forum" asp-action="Search" method="post">
                 <div class="searchForm">
                     <input class="searchBar" asp-for="SearchQuery" type="text" placeholder="Wyszukaj..." onfocus="clearThis(this)" />
-                    <button class="btn buttonSearch" type="submit">
+                    <button class="btn btn-forumSearch" type="submit">
                         <i class="material-icons">search</i>
                     </button>
                 </div>
@@ -27,17 +27,19 @@
         </div>
         <div class="sectionDescription">
             <div class="forumLogo" style="background-image: url(@Model.Forum.ImageUrl)"></div>
-            <p>Welcome to the @Model.Forum.Name forum. Please keep posts friendly and on-topic.</p>
+            <p>Witaj na forum: @Model.Forum.Name. <br /> 
+                @Model.Forum.Description. <br />
             
             @if (!User.Identity.IsAuthenticated)
             {
-                <p>
-                    <span>Musisz być
+                    <span>
+                        Musisz być
                         <a asp-cotnroller="Account" asp-action="Register">zarejestrowany</a>
                         , aby utworzyć nowy post.
                     </span>
-                </p>
-            }
+                    
+                }
+            </p>
         </div>
     </div>
     <div class="row forumIndexContent">
