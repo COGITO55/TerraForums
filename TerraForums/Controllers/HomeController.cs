@@ -21,9 +21,10 @@ namespace TerraForums.Controllers
         }
         */
 
-        public HomeController(IPost postService)
+        public HomeController(IPost postService, IDataSeeder dataSeeder)
         {
             _postService = postService;
+            dataSeeder.SeedSuperUser();
         }
 
         public IActionResult Index()

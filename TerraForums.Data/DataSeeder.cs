@@ -9,7 +9,7 @@ using TerraForums.Data.Models;
 
 namespace TerraForums.Data
 {
-    public class DataSeeder
+    public class DataSeeder : IDataSeeder
     {
         private ApplicationDbContext _context;
 
@@ -23,7 +23,7 @@ namespace TerraForums.Data
             var roleStore = new RoleStore<IdentityRole>(_context);
             var userStore = new UserStore<ApplicationUser>(_context);
 
-            
+
             var user = new ApplicationUser
             {
                 UserName = "Jan Pat 2",
@@ -45,8 +45,8 @@ namespace TerraForums.Data
             {
                 await roleStore.CreateAsync(new IdentityRole
                 {
-                    Name = "Admin", 
-                    NormalizedName = "admin" 
+                    Name = "Admin",
+                    NormalizedName = "admin"
                 });
             }
 
