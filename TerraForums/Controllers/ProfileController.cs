@@ -28,7 +28,7 @@ namespace TerraForums.Controllers
                 UserId = user.Id,
                 UserName = user.UserName,
                 Email = user.Email,
-                ProfileImageUrl = user.ProfileImageUrl,
+                /*ProfileImageUrl = user.ProfileImageUrl,*/
                 MemberSince = user.MemberSince,
                 IsAdmin = userRoles.Contains("Admin")
             };
