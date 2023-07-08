@@ -3,8 +3,8 @@
 <div class="container-body">
     <div class="row frontPageSplash">
         <div class="col-md-12 frontPageLearn">
-            <div class="frontPageHeading">Place Holder, Hold Places and Place the Holds</div>
-            <p class="frontPageSubHeading">Prawidziwe forum dla terrorystów i hodowców egzotycznych zwierząt</p>
+            <div class="frontPageHeading">TerraForums - forum dla prawdziwych terrarystów</div>
+            <p class="frontPageSubHeading">Prawdziwy terrarysta nie dba o jakieś opisy na głównej stronie</p>
             <div>
                 <form asp-controller="Search" asp-action="Search" method="post">
                     <input class="homeSearch" asp-for="SearchQuery" type="text" placeholder="Szukaj tematu..." />
@@ -23,28 +23,30 @@
                         <td>
                             <div class="forumLogo" style="background-image: url(@post.Forum.ImageUrl);"></div>
                             <div class="postTitle">
+                                <span class="postUser">
+                                </span>
                                 <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
-                                    @post.Title
+                                    @post.Title 
                                 </a>
+                               
+                                (<a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
+                                    @post.AuthorName
+                                </a>)
                             </div>
                             <div class="PostSubtitle">
-                                @if (post.RepliesCount == 1)
-                                {
-                                    <span>@post.RepliesCount Reply</span>    
-                                }
                                 @if (post.RepliesCount == 0)
                                 {
-                                    <span>No Replies</span>    
+                                    <span>Brak odpowiedzi do tego tematu</span>    
+                                }
+                                @if (post.RepliesCount == 1)
+                                {
+                                    <span>@post.RepliesCount odpowiedź</span>
                                 }
                                 @if (post.RepliesCount > 1)
                                 {
-                                    <span>@post.RepliesCount Replies</span>
+                                    <span>@post.RepliesCount odpowiedzi</span>
                                 }
-                                <span class="postUser">
-                                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
-                                        @post.AuthorName
-                                    </a>
-                                 </span>
+                                
                             </div>
                         </td>
                     </tr>

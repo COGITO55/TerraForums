@@ -1,6 +1,8 @@
 ﻿@model TerraForums.Models.Post.NewPostModel
 
-<h1>New Post | @Model.ForumName</h1>
+<div class="createPostBody">
+
+<h1 id="createPostHeading">Utwórz nowy post w kategorii: @Model.ForumName</h1>
 
 <form asp-action="AddPost" method="post" id="addPostForm">
     <div class="form-group">
@@ -11,6 +13,10 @@
         <label asp-for="Content"></label>
         <textarea asp-for="Content" class="form-control"></textarea>
     </div>
+    <div class="formBtn">
     <button type="submit" id="submitPostBtn" class="btn btn-submitPost">Submit Post</button>
     <input asp-for="ForumId" type="hidden" />
+    </div>
 </form>
+
+</div>

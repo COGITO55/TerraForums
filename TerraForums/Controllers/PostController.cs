@@ -32,7 +32,7 @@ namespace TerraForums.Controllers
                 Title = post.Title,
                 AuthorId = post.User.Id,
                 AuthorName = post.User.UserName,
-                AuthorImageUrl = post.User.ProfileImageUrl,
+                /*AuthorImageUrl = post.User.ProfileImageUrl,*/
                 Created = post.Created,
                 PostContent = post.Content,
                 Replies = replies,
@@ -92,7 +92,7 @@ namespace TerraForums.Controllers
                 Id = reply.Id,
                 AuthorName = reply.User.UserName,
                 AuthorId = reply.User.Id,
-                AuthorImageUrl = reply.User.ProfileImageUrl,
+                /*AuthorImageUrl = reply.User.ProfileImageUrl,*/
                 Created = reply.Created,
                 ReplyContent = reply.Content,
                 IsAuthorAdmin = IsAuthorAdmin(reply.User)
