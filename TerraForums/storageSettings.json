@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "AzureConnection": "DefaultEndpointsProtocol=https;AccountName=terraforums;AccountKey=h4acYcfSxTsmqV4KuB0TChY16aYEA9Pd70WARxQPEOtPWMyKDCEdGKkAXCiNxURFGrHTAOjKIBYh+AStd703Jw==;EndpointSuffix=core.windows.net"
+  }
+}

@@ -23,6 +23,8 @@ builder.Services.AddScoped<IForum, ForumService>();
 builder.Services.AddScoped<IPost, PostService>();
 builder.Services.AddScoped<IDataSeeder, DataSeeder>();
 
+builder.Configuration.AddJsonFile("storageSettings.json", false, true);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

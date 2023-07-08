@@ -11,7 +11,7 @@
                        asp-controller="Post"
                        asp-action="Create" 
                        asp-route-id="@Model.Forum.Id">
-                       Create Post
+                       Utwórz post
                    </a>
                 </span>
             }
@@ -34,7 +34,9 @@
             {
                     <span>
                         Musisz być
-                        <a asp-cotnroller="Account" asp-action="Register">zarejestrowany</a>
+                        <a class="" asp-area="Identity" asp-page="/Account/Register">
+                            zarejestrowany
+                        </a>.
                         , aby utworzyć nowy post.
                     </span>
                     
@@ -87,16 +89,34 @@
         }
         else
         {
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="noPosts">
+                    <i class="material-icons md-72">question_answer</i>
+                    <h3>
+                        Wygląda na to, że nie ma jeszcze żadnych postów w tej kategorii. Aby utworzyć post, musisz być
+                        <a class="" asp-area="Identity" asp-page="/Account/Register">
+                            zarejestrowany
+                        </a>.
+                    </h3>
+                </div>
+            }
+            else
+            {
             <div class="noPosts">
-                <i class="material-icons md-72">question_answer</i>
+                    <i class="material-icons md-72">question_answer</i>
                 <h3>
                     Wygląda na to, że nie ma jeszcze żadnych postów w tej kategorii.
-                    <a asp-controlle="Post" asp-acti="Create" asp-route-id="@Model.Forum.Id">
+                        <a class=""
+                           asp-controller="Post"
+                           asp-action="Create"
+                           asp-route-id="@Model.Forum.Id">
                     Utwórz 
                     </a>
                     pierwszy post.
                 </h3>
             </div>
+            }
         }
     </div>
 </div>
